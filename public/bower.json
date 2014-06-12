@@ -1,0 +1,21 @@
+{
+  "name": "nicholasbarger.com",
+  "version": "0.0.0",
+  "authors": [
+    "Nicholas Barger <nicholas@nicholasbarger.com>"
+  ],
+  "description": "Nicholas Barger's personal website and blog.",
+  "main": "index.html",
+  "keywords": [
+    "nicholas barger"
+  ],
+  "license": "MIT",
+  "homepage": "/",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.17",
+    "masonry": "~3.1.5",
+    "angular-masonry": "~0.8.1",
+    "font-awesome": "~4.1.0"
+  }
+}

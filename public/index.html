@@ -1,0 +1,43 @@
+<html ng-app="nb">
+  <head>
+    <title>Nicholas Barger's Blog</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="styles.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- fixed header -->
+    <header>
+        <h1>Nicholas Barger's Blog</h1>
+        <small>One part business, plus one part code, equals fledgling technoblog.</small>
+
+        <img src="media/images/me-costa.jpg" alt="Nicholas Barger">
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- content -->
+    <ng-view class="content"></ng-view>
+
+    <!-- scripts -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-masonry/angular-masonry.js"></script>
+
+    <script src="app.js"></script>
+    <script src="services.js"></script>
+    <script src="directives/post.js"></script>
+    <script src="controllers/post.js"></script>
+    <script src="controllers/roll.js"></script>
+
+    <!-- todo: add google analytics -->
+  </body>
+</html>
