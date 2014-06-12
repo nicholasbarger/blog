@@ -7,6 +7,16 @@ var nb = angular
         templateUrl: 'templates/roll.html',
         controller: 'rollController'
       })
+      .when('/about', {
+        templateUrl: 'templates/about.html'
+      })
+      .when('/contact', {
+        templateUrl: 'templates/contact.html',
+        controller: 'contactController'
+      })
+      .when('/portfolio', {
+        templateUrl: 'templates/portfolio.html'
+      })
       .when('/post/:id', {
         templateUrl: 'templates/post.html',
         controller: 'postController'
