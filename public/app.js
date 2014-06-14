@@ -1,25 +1,45 @@
 var nb = angular
-  .module('nb', ['ngRoute', 'wu.masonry'])
+  .module('nb', ['ngRoute', 'ngLocale'])
   .config(function($locationProvider, $routeProvider) {
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
-        templateUrl: 'templates/roll.html',
-        controller: 'rollController'
+        templateUrl: '/templates/latest.html',
+        controller: 'latestController'
       })
       .when('/about', {
-        templateUrl: 'templates/about.html'
+        templateUrl: '/templates/about.html'
       })
       .when('/contact', {
-        templateUrl: 'templates/contact.html',
+        templateUrl: '/templates/contact.html',
         controller: 'contactController'
       })
       .when('/portfolio', {
-        templateUrl: 'templates/portfolio.html'
+        templateUrl: '/templates/portfolio.html'
       })
-      .when('/post/:id', {
-        templateUrl: 'templates/post.html',
+      .when('/portfolio/arthrex', {
+        templateUrl: '/templates/portfolio-arthrex.html'
+      })
+      .when('/portfolio/hitech', {
+        templateUrl: '/templates/portfolio-hitech.html'
+      })
+      .when('/portfolio/oms', {
+        templateUrl: '/templates/portfolio-oms.html'
+      })
+      .when('/portfolio/ptgl', {
+        templateUrl: '/templates/portfolio-ptgl.html'
+      })
+      .when('/posts', {
+        templateUrl: '/templates/posts.html',
+        controller: 'postsController'
+      })
+      .when('/posts/:id', {
+        templateUrl: '/templates/post.html',
         controller: 'postController'
+      })
+      .otherwise({
+        templateUrl: '/templates/not-found.html',
+        controller: 'notFoundController'
       });
   })
   .constant('appSettings', {

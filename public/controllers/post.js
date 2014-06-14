@@ -1,11 +1,6 @@
 nb.controller('postController', ['$routeParams', '$sce', '$scope', 'blogFactory',
   function($routeParams, $sce, $scope, blogFactory) {
-    $scope.post = {
-        title: 'test title',
-        description: 'test description',
-        pubdate: '01/01/2014',
-        content: '<p>Welcome to the test</p>'
-    };
+    $scope.post = null;
 
   (function init() {
     var link = $routeParams.id;

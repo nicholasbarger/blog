@@ -6,6 +6,6 @@ nb.directive('back', function() {
         window.history.back();
       })
     },
-    template: '<a href=""><i class="fa fa-caret-left"></i>Go back</a>'
+    template: '<a href="" class="subtle"><i class="fa fa-caret-left"></i>Go back</a>'
   }
 });

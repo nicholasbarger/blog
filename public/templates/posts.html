@@ -1,0 +1,7 @@
+<h2 style="float: left;">Blog Posts</h2>
+<input type="search" ng-model="search" placeholder="search" style="float: right;">
+<div style="clear: both;"></div>
+<br>
+
+<blog-posts posts="posts | filter:search" columns="3"></blog-posts>
+

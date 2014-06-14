@@ -17,10 +17,10 @@
 
     <nav class="main-nav">
         <ul>
-            <li><a href="#">Posts</a></li>
-            <li><a href="#/about">About</a></li>
-            <li><a href="#/portfolio">Portfolio</a></li>
-            <li><a href="#/contact">Contact</a></li>
+            <li><a href="/posts">Posts</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -28,17 +28,20 @@
     <ng-view class="content"></ng-view>
 
     <!-- scripts -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-masonry/angular-masonry.js"></script>
 
     <script src="app.js"></script>
     <script src="services.js"></script>
     <script src="directives/back.js"></script>
-    <script src="directives/post.js"></script>
+    <script src="directives/blog-post.js"></script>
+    <script src="directives/blog-posts.js"></script>
     <script src="controllers/contact.js"></script>
+    <script src="controllers/latest.js"></script>
+    <script src="controllers/not-found.js"></script>
     <script src="controllers/post.js"></script>
-    <script src="controllers/roll.js"></script>
+    <script src="controllers/posts.js"></script>
 
     <!-- todo: add google analytics -->
   </body>

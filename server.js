@@ -23,11 +23,11 @@ app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 
-// initialize routes for web
-var web = require('./routes/web.js')(app);
-
 // initialize routes for api
 var api = require('./routes/api.js')(app);
+
+// initialize routes for web
+var web = require('./routes/web.js')(app);
 
 // start web server
 var server = app.listen(port, function() {

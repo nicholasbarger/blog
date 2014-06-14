@@ -1,4 +1,13 @@
+*, *:before, *:after {
+  webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 a {
+  color: lightgreen;
+}
+
+a.subtle {
   color: inherit;
 }
 
@@ -64,9 +73,10 @@ h3 {
   margin-bottom: 15px;
 }
 
-*, *:before, *:after {
-  webkit-box-sizing: border-box;
-  box-sizing: border-box;
+input[type='search'] {
+  margin-top: 10px;
+  margin-right: 15px;
+  font-size: 1em;
 }
 
 .contact-item {
@@ -80,6 +90,10 @@ h3 {
   left: 41.66666667%;
   width: 53.33333333%;
   position: absolute;
+}
+
+.content img {
+  max-width: 100%;
 }
 
 a .fa {
@@ -106,6 +120,7 @@ a .fa {
 
 .main-nav a {
   text-decoration: none;
+  color: #fff;
 }
 
 .main-nav a:hover {
@@ -131,13 +146,18 @@ a .fa {
 .post-list .post {
   border: 2px solid #fff;
   padding: 15px;
-  width: 31%;
+  /*width: 31%;*/
   margin-right: 15px;
-  float: left;
+  margin-bottom: 15px;
+  /*float: left;*/
 }
 
 .post-list .post:hover {
   border: 2px solid #34a343;
+}
+
+.post-list .post a {
+  color: #fff;
 }
 
 .post-list .post h2 {
@@ -147,4 +167,3 @@ a .fa {
 .post-list .post .post-content {
   display: none;
 }
-

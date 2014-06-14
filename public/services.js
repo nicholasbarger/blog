@@ -1,13 +1,27 @@
 nb.factory('blogFactory', ['$http', '$q', function($http, $q) {
     return {
       getCollection: getCollection,
+      getLatest: getLatest,
       getSingle: getSingle,
       save: save
     };
 
     function getCollection() {
       var deferred = $q.defer();
-      $http.get('/posts')
+      $http.get('/api/posts')
+        .success(function(data, status, headers, config) {
+          deferred.resolve(data);
+        })
+        .error(function(data, status, headers, config) {
+          deferred.reject(data);
+        });
+
+      return deferred.promise;
+    }
+
+    function getLatest() {
+      var deferred = $q.defer();
+      $http.get('/api/posts/latest')
         .success(function(data, status, headers, config) {
           deferred.resolve(data);
         })
@@ -20,7 +34,7 @@ nb.factory('blogFactory', ['$http', '$q', function($http, $q) {
 
     function getSingle(link) {
       var deferred = $q.defer();
-      $http.get('/posts/' + link)
+      $http.get('/api/posts/' + link)
         .success(function(data, status, headers, config) {
           deferred.resolve(data);
         })
@@ -33,7 +47,7 @@ nb.factory('blogFactory', ['$http', '$q', function($http, $q) {
 
     function save(post) {
       var deferred = $q.defer();
-      $http.post('/posts/' + ripple._id, ripple)
+      $http.post('/api/posts/' + ripple._id, ripple)
         .success(function(data, status, headers, config) {
           deferred.resolve(data);
         })
