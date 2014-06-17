@@ -1,0 +1,9 @@
+<form ng-submit="save()">
+  <input type="text" ng-model="post.title" placeholder="title" required><br>
+  <input type="datetime" ng-model="post.pubDate" placeholder="publish date" required style="width: 25%">
+  <input type="url" ng-model="post.link" placeholder="url" required style="width: 74%; float: right;"><br>
+  <textarea ng-model="post.content" rows="13" placeholder="content" required></textarea><br>
+
+  <cancel-button></cancel-button>
+  <button type="submit">Save</button>
+</form>

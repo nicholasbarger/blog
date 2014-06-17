@@ -47,13 +47,24 @@ nb.factory('blogFactory', ['$http', '$q', function($http, $q) {
 
     function save(post) {
       var deferred = $q.defer();
-      $http.post('/api/posts/' + ripple._id, ripple)
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(data, status, headers, config) {
-          deferred.reject(data);
-        });
+      if(post._id == null) {
+        $http.post('/api/posts/', post)
+          .success(function(data, status, headers, config) {
+            deferred.resolve(data);
+          })
+          .error(function(data, status, headers, config) {
+            deferred.reject(data);
+          });
+      }
+      else {
+        $http.put('/api/posts/' + post._id, post)
+          .success(function(data, status, headers, config) {
+            deferred.resolve(data);
+          })
+          .error(function(data, status, headers, config) {
+            deferred.reject(data);
+          });
+      }
 
       return deferred.promise;
     }

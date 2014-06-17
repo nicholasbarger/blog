@@ -8,7 +8,7 @@ var app = express();
 // database
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/nicholasbarger');
+var db = monk('localhost:27017/nb');
 
 // make db accessible to our router
 app.use(function(req,res,next){

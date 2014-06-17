@@ -9,7 +9,7 @@ nb.directive('blogPosts', function($parse) {
       posts: '='
     },
     replace: 'true',
-    templateUrl: 'directives/blog-posts-template.html',
+    template: '<div id="{{id}}" class="post-list"></div>',
     compile: function(elem, attrs) {
       var columnHtml = '';
 
@@ -36,7 +36,7 @@ nb.directive('blogPosts', function($parse) {
               var post = val[i];
               var postHtml = '<div class="post">' +
                 '<h2 class="title">' +
-                '<a href="/posts/' + post.id + '">' + post.title + '</a>' +
+                '<a href="/posts/' + post.name + '">' + post.title + '</a>' +
                 '</h2>'
               '<small class="pubDate">' + post.pubDate + '</small>' +
               '</div>';

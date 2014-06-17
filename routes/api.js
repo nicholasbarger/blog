@@ -1,59 +1,65 @@
-var fs = require('fs');
-var path = require('path');
-var dir = './posts/';
+var uuid = require('uuid');
 
 module.exports = function(app) {
 
   // get the most recent post
   app.get('/api/posts/latest', function (req, res) {
-    var files = fs.readdir(dir, function(err, files) {
-      var i;
-      var latestFilename = null;
-      var latestTimestamp = null;
-      files.forEach(function(file) {
-        fs.readFile(dir + file, 'utf8', function (err, data) {
-          var post = JSON.parse(data);
-          if (latestTimestamp == null || post.pubDate > latestTimestamp) {
-            latestFilename = file;
-            latestTimestamp = post.pubDate;
-          }
-          i++;
-
-          if(i === files.length) {
-            fs.readFile(dir + latestFilename, 'utf8', function(err, data) {
-              res.send(data);
-            })
-          }
-        })
-      });
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.findOne(null, { limit: 1, sort: { pubDate: -1 } }, function(e, data) {
+      res.json(data);
     });
   });
 
   // get a specific item
-  app.get('/api/posts/:link', function (req, res) {
-    fs.readFile(dir + req.params['link'], 'utf8', function(err, data) {
-      res.send(data);
+  app.get('/api/posts/:name', function (req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.findOne({ name: req.params.name }, function(e, data) {
+      res.json(data);
     });
   });
 
   // get all available posts
   app.get('/api/posts', function (req, res) {
-    fs.readdir(dir, function(err, files) {
-      var posts = [];
-      files.forEach(function(file) {
-        fs.readFile(dir + file, 'utf8', function(err, data) {
-          var smallPost = JSON.parse(data);
-          smallPost.content = null;  // clear out for bandwidth
-          posts.push(smallPost);
-          if(posts.length === files.length) {
-            res.json(posts);
-          }
-        })
-      });
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.find({}, function(e, data) {
+      res.json(data);
     });
   });
 
+  // create a new post
   app.post('/api/posts', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.insert({
+      name: createNameFromTitle(req.body.title),
+      title: req.body.title,
+      pubDate: req.body.pubDate,
+      link: req.body.link,
+      content: req.body.content
+    }, function(err, data) {
+      res.send(!err);
+    });
+  });
 
+  // update an existing post
+  app.put('/api/posts/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.update({ _id: req.params.id}, { $set: {
+      name: createNameFromTitle(req.body.title),
+      title: req.body.title,
+      pubDate: req.body.pubDate,
+      link: req.body.link,
+      content: req.body.content
+    }}, function(err, data) {
+      res.send(!err);
+    });
   });
 };
+
+function createNameFromTitle(title) {
+  return title.toLowerCase().replace(/\s+/g, '-');
+}

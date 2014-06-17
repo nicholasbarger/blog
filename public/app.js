@@ -10,6 +10,22 @@ var nb = angular
       .when('/about', {
         templateUrl: '/templates/about.html'
       })
+      .when('/admin', {
+        templateUrl: '/templates/manage.html',
+        controller: 'manageController'
+      })
+      .when('/admin/create', {
+        templateUrl: '/templates/create.html',
+        controller: 'createController'
+      })
+      .when('/admin/edit/:id', {
+        templateUrl: '/templates/edit.html',
+        controller: 'editController'
+      })
+      .when('/admin/manage', {
+        templateUrl: '/templates/manage.html',
+        controller: 'manageController'
+      })
       .when('/contact', {
         templateUrl: '/templates/contact.html',
         controller: 'contactController'

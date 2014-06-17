@@ -1,0 +1,31 @@
+/* Anything except smart phones ----------- */
+@media only screen
+and (min-width : 651px) {
+  body {
+  }
+
+  header {
+    width: 31%;
+    max-width: 640px;
+    min-height: 460px;
+    position: fixed;
+    text-align: inherit;
+  }
+
+  h2 {
+    margin-top: inherit;
+  }
+
+  .content {
+    float: left;
+    left: 41.66666667%;
+    width: 53.33333333%;
+    position: absolute;
+    display: inherit;
+    max-width: inherit;
+  }
+
+  .main-nav {
+    left: 35%;
+  }
+}

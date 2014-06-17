@@ -3,16 +3,17 @@
     <title>Nicholas Barger's Blog</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-    <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="styles.css" type="text/css" rel="stylesheet">
+    <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/mobile-styles.css" type="text/css" rel="stylesheet">
+    <link href="/desktop-styles.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <!-- fixed header -->
     <header>
         <h1>Nicholas Barger's Blog</h1>
-        <small>One part business, plus one part code, equals fledgling technoblog.</small>
+        <small>Life in code</small>
 
-        <img src="media/images/me-costa.jpg" alt="Nicholas Barger">
+        <img src="/media/images/me-costa.jpg" alt="Nicholas Barger">
     </header>
 
     <nav class="main-nav">
@@ -28,20 +29,24 @@
     <ng-view class="content"></ng-view>
 
     <!-- scripts -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
 
-    <script src="app.js"></script>
-    <script src="services.js"></script>
-    <script src="directives/back.js"></script>
-    <script src="directives/blog-post.js"></script>
-    <script src="directives/blog-posts.js"></script>
-    <script src="controllers/contact.js"></script>
-    <script src="controllers/latest.js"></script>
-    <script src="controllers/not-found.js"></script>
-    <script src="controllers/post.js"></script>
-    <script src="controllers/posts.js"></script>
+    <script src="/app.js"></script>
+    <script src="/services.js"></script>
+    <script src="/directives/back.js"></script>
+    <script src="/directives/blog-post.js"></script>
+    <script src="/directives/blog-posts.js"></script>
+    <script src="/directives/cancel-button.js"></script>
+    <script src="/controllers/contact.js"></script>
+    <script src="/controllers/create.js"></script>
+    <script src="/controllers/edit.js"></script>
+    <script src="/controllers/latest.js"></script>
+    <script src="/controllers/manage.js"></script>
+    <script src="/controllers/not-found.js"></script>
+    <script src="/controllers/post.js"></script>
+    <script src="/controllers/posts.js"></script>
 
     <!-- todo: add google analytics -->
   </body>
