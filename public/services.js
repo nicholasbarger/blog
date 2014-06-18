@@ -1,4 +1,18 @@
-nb.factory('blogFactory', ['$http', '$q', function($http, $q) {
+nb.service('authentication', ['$http', '$q', function($http, $q) {
+    this.authenticate = function(username, password) {
+      var deferred = $q.defer();
+      $http.post('/api/auth', { username: username, password: password })
+        .success(function(data, status, headers, config) {
+          deferred.resolve(data);
+        })
+        .error(function(data, status, headers, config) {
+          deferred.reject(data);
+        });
+
+      return deferred.promise;
+    };
+  }])
+  .factory('blogFactory', ['$http', '$q', function($http, $q) {
     return {
       getCollection: getCollection,
       getLatest: getLatest,

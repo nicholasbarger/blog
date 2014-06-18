@@ -1,3 +1,4 @@
+var bcrypt = require('bcrypt');
 var uuid = require('uuid');
 
 module.exports = function(app) {
@@ -7,6 +8,10 @@ module.exports = function(app) {
     var db = req.db;
     var collection = db.get('posts');
     collection.findOne(null, { limit: 1, sort: { pubDate: -1 } }, function(e, data) {
+      if(e) {
+        console.log(e);
+      }
+
       res.json(data);
     });
   });
@@ -16,6 +21,10 @@ module.exports = function(app) {
     var db = req.db;
     var collection = db.get('posts');
     collection.findOne({ name: req.params.name }, function(e, data) {
+      if(e) {
+        console.log(e);
+      }
+
       res.json(data);
     });
   });
@@ -25,6 +34,10 @@ module.exports = function(app) {
     var db = req.db;
     var collection = db.get('posts');
     collection.find({}, function(e, data) {
+      if(e) {
+        console.log(e);
+      }
+
       res.json(data);
     });
   });
@@ -40,6 +53,9 @@ module.exports = function(app) {
       link: req.body.link,
       content: req.body.content
     }, function(err, data) {
+      if(err) {
+        console.log(err);
+      }
       res.send(!err);
     });
   });
@@ -55,7 +71,42 @@ module.exports = function(app) {
       link: req.body.link,
       content: req.body.content
     }}, function(err, data) {
+      if(err) {
+        console.log(err);
+      }
+
       res.send(!err);
+    });
+  });
+
+  // authenticate user
+  app.post('/api/auth', function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    // validate input
+    if(username == null || username === '' || password == null || password === '') {
+      res.send(false);
+      return;
+    }
+
+    // check db
+    var db = req.db;
+    var collection = db.get('users');
+    collection.findOne({ username: username }, function(err, data) {
+      if(err || data == null) {
+        console.log(err);
+        res.send(false);
+        return;
+      }
+
+      // get hash
+      var hash = data.password;
+
+      // check password
+      bcrypt.compare(password, hash, function(err, isValid) {
+        res.send(isValid);
+      });
     });
   });
 };

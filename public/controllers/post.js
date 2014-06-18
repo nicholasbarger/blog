@@ -7,6 +7,9 @@ nb.controller('postController', ['$routeParams', '$sce', '$scope', 'blogFactory'
     blogFactory.getSingle(link).then(function(payload) {
       $scope.post = payload;
       $scope.post.contentHtml = $sce.trustAsHtml($scope.post.content);
+
+      // code syntax plugin
+      SyntaxHighlighter.all();
     })
   })();
 }]);

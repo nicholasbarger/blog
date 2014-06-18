@@ -3,7 +3,11 @@
     <title>Nicholas Barger's Blog</title>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+
     <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="bower_components/syntaxhighlighter/styles/shCore.css" rel="stylesheet">
+    <link href="bower_components/syntaxhighlighter/styles/shCoreDefault.css" rel="stylesheet">
+
     <link href="/mobile-styles.css" type="text/css" rel="stylesheet">
     <link href="/desktop-styles.css" type="text/css" rel="stylesheet">
   </head>
@@ -11,7 +15,7 @@
     <!-- fixed header -->
     <header>
         <h1>Nicholas Barger's Blog</h1>
-        <small>Life in code</small>
+        <small>Life in c<a href="/login" class="easter-egg-link">o</a>de</small>
 
         <img src="/media/images/me-costa.jpg" alt="Nicholas Barger">
     </header>
@@ -32,6 +36,8 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
+    <!--<script src="/bower_components/SyntaxHighlighter/scripts/shCore.js"></script>-->
+    <!--<script src="/bower_components/SyntaxHighlighter/scripts/shBrushSql.js"></script>-->
 
     <script src="/app.js"></script>
     <script src="/services.js"></script>
@@ -43,6 +49,7 @@
     <script src="/controllers/create.js"></script>
     <script src="/controllers/edit.js"></script>
     <script src="/controllers/latest.js"></script>
+    <script src="/controllers/login.js"></script>
     <script src="/controllers/manage.js"></script>
     <script src="/controllers/not-found.js"></script>
     <script src="/controllers/post.js"></script>

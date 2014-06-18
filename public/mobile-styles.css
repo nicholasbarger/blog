@@ -111,6 +111,15 @@ input[type='search'] {
   font-size: 1em;
 }
 
+pre {
+  width: 100%;
+  overflow-x: auto;
+  font-size: .8em;
+  background-color: #101010;
+  color: #fff;
+  padding: 15px;
+}
+
 table {
   width: 100%;
 }
@@ -137,6 +146,12 @@ table td {
 
 .content img {
   max-width: 100%;
+}
+
+.easter-egg-link {
+  text-decoration: none;
+  cursor: none;
+  color: inherit;
 }
 
 .main-nav {
@@ -185,14 +200,17 @@ table td {
 .post-list .post {
   border: 2px solid #fff;
   padding: 15px;
-  /*width: 31%;*/
   margin-right: 15px;
   margin-bottom: 15px;
-  /*float: left;*/
+  display: block;
+  color: #fff;
+  text-align: center;
 }
 
 .post-list .post:hover {
-  border: 2px solid #34a343;
+  /*border: 2px solid #34a343;*/
+  background-color: green;
+  cursor: pointer;
 }
 
 .post-list .post a {

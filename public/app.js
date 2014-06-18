@@ -30,6 +30,10 @@ var nb = angular
         templateUrl: '/templates/contact.html',
         controller: 'contactController'
       })
+      .when('/login', {
+        templateUrl: '/templates/login.html',
+        controller: 'loginController'
+      })
       .when('/portfolio', {
         templateUrl: '/templates/portfolio.html'
       })
