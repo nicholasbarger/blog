@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // database
-var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nb');
 
@@ -32,7 +31,7 @@ var web = require('./routes/web.js')(app);
 // start web server
 var server = app.listen(port, function() {
   console.log('Webserver started at http://localhost:%d/', server.address().port);
-})
+});
 
 function logErrors(err, req, res, next) {
   console.error(err.stack);

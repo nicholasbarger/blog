@@ -27,13 +27,11 @@ nb.directive('blogPosts', function($parse) {
       elem.html(columnHtml);
 
       return function(scope, elem, attrs) {
-        var postsAccessor = $parse(attrs.posts);
-        scope.$watch(postsAccessor, function(val) {
+        scope.$watch(attrs.posts, function(val) {
           // clear to begin
           nextColumn = 0;
-          var shortestHeight = $('#column0').height();
           for(var i = 0; i < scope.columns; i++) {
-            $('column' + i).empty('');
+            $('#column' + i).empty('');
           }
 
           if(val != null) {
@@ -56,7 +54,7 @@ nb.directive('blogPosts', function($parse) {
 
             }
           }
-        })
+        });
       }
     }
   }
