@@ -1,5 +1,5 @@
 var http = require('http');
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 var express = require('express');
 var bodyParser = require('body-parser');
