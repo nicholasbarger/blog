@@ -7,7 +7,8 @@ var app = express();
 
 // database
 var monk = require('monk');
-var db = monk(process.env.MONGOHQ_URL);
+var conn = process.env.MONGOHQ_URL || 'localhost:27017/nb';
+var db = monk(conn);
 
 // make db accessible to our router
 app.use(function(req,res,next){
