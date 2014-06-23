@@ -1,4 +1,4 @@
-nb.controller('createController', function($scope, blogFactory) {
+nb.controller('createController', function($location, $scope, blogFactory) {
   $scope.post = {
     title: '',
     pubDate: new Date(),
@@ -7,7 +7,7 @@ nb.controller('createController', function($scope, blogFactory) {
 
   $scope.save = function() {
     blogFactory.save($scope.post).then(function(res) {
-      alert('saved');
+      $location.path('/admin');
     });
   };
 });

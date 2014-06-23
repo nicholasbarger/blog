@@ -4,7 +4,7 @@ nb.controller('editController', function($routeParams, $scope, blogFactory) {
   // save updates
   $scope.save = function() {
     blogFactory.save($scope.post).then(function(res) {
-      alert('saved');
+      $location.path('/admin');
     });
   };
 
