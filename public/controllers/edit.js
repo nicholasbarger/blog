@@ -1,4 +1,4 @@
-nb.controller('editController', function($routeParams, $scope, blogFactory) {
+nb.controller('editController', function($location, $routeParams, $scope, blogFactory) {
   $scope.post = null;
 
   // save updates
