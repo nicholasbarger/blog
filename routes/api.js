@@ -33,7 +33,7 @@ module.exports = function(app) {
   app.get('/api/posts', function (req, res) {
     var db = req.db;
     var collection = db.get('posts');
-    collection.find({}, { sort: { pubDate: 0 }, fields: { content:0 }}, function(e, data) {
+    collection.find({}, { sort: { pubDate: -1 }, fields: { content:0 }}, function(e, data) {
       if(e) {
         console.log(e);
       }
