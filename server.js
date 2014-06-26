@@ -11,7 +11,7 @@ var conn = process.env.MONGOHQ_URL || 'localhost:27017/nb';
 var db = monk(conn);
 
 // make db accessible to our router
-app.use(function(req,res,next){
+app.use(function(req, res, next){
     req.db = db;
     next();
 });

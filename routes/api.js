@@ -7,7 +7,7 @@ module.exports = function(app) {
   app.get('/api/posts/latest', function (req, res) {
     var db = req.db;
     var collection = db.get('posts');
-    collection.findOne(null, { limit: 1, sort: { pubDate: -1 } }, function(e, data) {
+    collection.findOne(null, { sort: { pubDate: -1 } }, function(e, data) {
       if(e) {
         console.log(e);
       }
