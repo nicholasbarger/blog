@@ -1,7 +1,4 @@
-var bcrypt = require('bcrypt');
-var uuid = require('uuid');
-
-module.exports = function(app) {
+module.exports = function(app, passport) {
 
   // get the most recent post
   app.get('/api/posts/latest', function (req, res) {
@@ -45,72 +42,79 @@ module.exports = function(app) {
   // create a new post
   app.post('/api/posts', function(req, res) {
     var db = req.db;
-    var collection = db.get('posts');
-    collection.insert({
-      name: createNameFromTitle(req.body.title),
-      title: req.body.title,
-      pubDate: req.body.pubDate,
-      link: req.body.link,
-      content: req.body.content
-    }, function(err, data) {
-      if(err) {
-        console.log(err);
+    isTokenValid(req.cookies.token, db, function(isValid) {
+      if(!isValid) {
+        res.send(401);
+        return;
       }
-      res.send(!err);
+
+      var collection = db.get('posts');
+      collection.insert({
+        name: createNameFromTitle(req.body.title),
+        title: req.body.title,
+        pubDate: req.body.pubDate,
+        link: req.body.link,
+        content: req.body.content
+      }, function(err, data) {
+        if(err) {
+          console.log(err);
+        }
+        res.send(!err);
+      });
     });
   });
 
   // update an existing post
   app.put('/api/posts/:id', function(req, res) {
     var db = req.db;
-    var collection = db.get('posts');
-    collection.update({ _id: req.params.id}, { $set: {
-      name: createNameFromTitle(req.body.title),
-      title: req.body.title,
-      pubDate: req.body.pubDate,
-      link: req.body.link,
-      content: req.body.content
-    }}, function(err, data) {
-      if(err) {
-        console.log(err);
+    isTokenValid(req.cookies.token, db, function(isValid) {
+      if(!isValid) {
+        res.send(401);
+        return;
       }
 
-      res.send(!err);
+      var collection = db.get('posts');
+      collection.update({ _id: req.params.id}, { $set: {
+        name: createNameFromTitle(req.body.title),
+        title: req.body.title,
+        pubDate: req.body.pubDate,
+        link: req.body.link,
+        content: req.body.content
+      }}, function(err, data) {
+        if(err) {
+          console.log(err);
+        }
+
+        res.send(!err);
+      });
     });
   });
 
   // authenticate user
   app.post('/api/auth', function(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
-
-    // validate input
-    if(username == null || username === '' || password == null || password === '') {
-      res.send(false);
-      return;
-    }
-
-    // check db
-    var db = req.db;
-    var collection = db.get('users');
-    collection.findOne({ username: username }, function(err, data) {
-      if(err || data == null) {
-        console.log(err);
-        res.send(false);
+    passport.authenticate('local', function(err, user) {
+      if(err || user === false) {
+        res.send(401);
         return;
       }
 
-      // get hash
-      var hash = data.password;
-
-      // check password
-      bcrypt.compare(password, hash, function(err, isValid) {
-        res.send(isValid);
-      });
-    });
+      res.cookie('token', user._id, { maxAge: 3600000 });  // 1 hour
+      res.send(200);
+    })(req, res);
   });
 };
 
 function createNameFromTitle(title) {
   return title.toLowerCase().replace(/\s+/g, '-');
+}
+
+function isTokenValid(token, db, callback) {
+  var collection = db.get('users');
+  collection.findOne({ _id: token }, function(err, data) {
+    if(err || data == null) {
+      callback(false);
+    }
+
+    callback(true);
+  })
 }

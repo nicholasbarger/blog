@@ -3,12 +3,17 @@ var port = process.env.PORT || 3000;
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
 var app = express();
 
 // database
 var monk = require('monk');
 var conn = process.env.MONGOHQ_URL || 'localhost:27017/nb';
 var db = monk(conn);
+
+// passport authentication
+require('./passport.js')(passport, db);
 
 // make db accessible to our router
 app.use(function(req, res, next){
@@ -18,13 +23,14 @@ app.use(function(req, res, next){
 
 // middleware
 app.use(bodyParser());
+app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 
 // initialize routes for api
-var api = require('./routes/api.js')(app);
+var api = require('./routes/api.js')(app, passport);
 
 // initialize routes for web
 var web = require('./routes/web.js')(app);
