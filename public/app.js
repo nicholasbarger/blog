@@ -57,6 +57,9 @@ var nb = angular
         templateUrl: '/templates/post.html',
         controller: 'postController'
       })
+      .when('/2008/05/14/my-basic-ado-net-helper-functions/', {
+        redirectTo: '/posts/my-basic-ado.net-helper-functions'
+      })
       .otherwise({
         templateUrl: '/templates/not-found.html',
         controller: 'notFoundController'

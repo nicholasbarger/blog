@@ -39,6 +39,24 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.get('/api/go', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.find(null, {name: 1, link:1}, function(err, data) {
+      var result = "";
+      for(var i = 0; i < data.length; i++) {
+        var link = data[i].link.replace('http://www.nicholasbarger.com', '');
+        var name = data[i].name;
+
+        result += ".when('" + link + "', {" +
+          "redirectTo: '/posts/" + name + "'" +
+        "})";
+      }
+
+      res.send(result);
+    });
+  });
+
   // create a new post
   app.post('/api/posts', function(req, res) {
     var db = req.db;
