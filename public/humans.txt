@@ -1,0 +1,9 @@
+/* ME */
+Nicholas Barger
+nicholas [@] nicholasbarger.com
+http://www.nicholasbarger.com
+
+/* SITE */
+Language: English
+Doctype: HTML5
+Framework: Angular (https://angularjs.org/)
