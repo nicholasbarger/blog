@@ -125,7 +125,7 @@ var nb = angular
       .when('/2011/04/28/reviving-dependency-walker/', {redirectTo: '/posts/reviving-dependency-walker'})
       .when('/2011/05/01/a-30-year-old-mythical-man-month/', {redirectTo: '/posts/a-30+-year-old-mythical-man-month'})
       .when('/2011/07/13/the-stored-procedure-for-searching-challenge/', {redirectTo: '/posts/the-stored-procedure-for-searching-challenge'})
-      .when('/2011/08/04/jquery-makes-100-height-so-much-easier/', {redirectTo: '/posts/jquery-makes-100%-height-so-much-easier'})
+      .when('/2011/08/04/jquery-makes-100-height-so-much-easier/', {redirectTo: '/posts/jquery-makes-100-height-so-much-easier'})
       .when('/2011/08/12/tfs-management-with-team-foundation-sidekicks-2010/', {redirectTo: '/posts/tfs-management-with-team-foundation-sidekicks-2010'})
       .when('/2011/09/05/moving-to-the-cloud-as-a-consumer/', {redirectTo: '/posts/moving-to-the-cloud,-as-a-consumer'})
       .when('/2011/10/25/my-recent-speaking-presentations/', {redirectTo: '/posts/my-recent-speaking-presentations'})
