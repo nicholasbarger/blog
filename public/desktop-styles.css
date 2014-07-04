@@ -20,6 +20,14 @@ and (min-width : 651px) {
     display: block;
   }
 
+  header h1 {
+    font-size: 1.25em;
+  }
+
+  header small {
+    font-size: 1.15em;
+  }
+
   h2 {
     margin-top: inherit;
   }
