@@ -19,7 +19,7 @@ nb.directive('blogPosts', function($parse) {
       var columnHtml = '';
 
       attrs.columns = attrs.columns || 1;
-      var columnClass = attrs.columns + "-columns";
+      var columnClass = "columns-" + attrs.columns;
 
       for(var i = 0; i < attrs.columns; i++) {
         columnHtml += '<div id="column' + i + '" class="' + columnClass + '"></div>';
