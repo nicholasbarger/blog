@@ -12,8 +12,27 @@ and (min-width : 651px) {
     text-align: inherit;
   }
 
+  header img {
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border: 5px solid #fff;
+    display: block;
+  }
+
   h2 {
     margin-top: inherit;
+  }
+
+  .columns-1 {
+  }
+  .columns-2 {
+    float: left;
+    width: 50%;
+  }
+  .columns-3 {
+    float: left;
+    width: 33.333333333333336%;
   }
 
   .content {

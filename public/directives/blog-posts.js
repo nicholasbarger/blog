@@ -19,10 +19,10 @@ nb.directive('blogPosts', function($parse) {
       var columnHtml = '';
 
       attrs.columns = attrs.columns || 1;
-      var widthPerColumn = 100 / attrs.columns;
+      var columnClass = attrs.columns + "-columns";
 
       for(var i = 0; i < attrs.columns; i++) {
-        columnHtml += '<div id="column' + i + '" style="width: ' + widthPerColumn + '%; float: left;"></div>';
+        columnHtml += '<div id="column' + i + '" class="columnClass"></div>';
       }
       elem.html(columnHtml);
 

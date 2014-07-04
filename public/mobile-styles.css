@@ -1,5 +1,3 @@
-
-
 *, *:before, *:after {
   webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -43,6 +41,13 @@ button[type='submit'], input[type='submit'], button.primary, input[type='button'
   background-color: #34a343;
 }
 
+.columns-1 {
+}
+.columns-2 {
+}
+.columns-3 {
+}
+
 form {
   margin-top: 15px;
 }
@@ -84,10 +89,7 @@ header small {
 }
 
 header img {
-  width: 90%;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  border: 5px solid #fff;
+  display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -164,14 +166,6 @@ table td {
   height: 100%;
 }
 
-.main-nav ul {
-  -webkit-transform: rotate(-90deg); /* Safari */
-  -moz-transform: rotate(-90deg); /* Firefox */
-  -ms-transform: rotate(-90deg); /* IE */
-  -o-transform: rotate(-90deg); /* Opera */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* IE */
-}
-
 .main-nav a {
   text-decoration: none;
   color: #fff;
@@ -184,11 +178,17 @@ table td {
 .main-nav ul {
   list-style: none;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   width: 400px;
   top: 150px;
   left: -175px;
   position: absolute;
+
+  -webkit-transform: rotate(-90deg); /* Safari */
+  -moz-transform: rotate(-90deg); /* Firefox */
+  -ms-transform: rotate(-90deg); /* IE */
+  -o-transform: rotate(-90deg); /* Opera */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* IE */
 }
 
 .main-nav ul li {
