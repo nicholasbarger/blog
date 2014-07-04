@@ -1,4 +1,4 @@
-<html ng-app="nb">
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="nb">
   <head ng-controller="rootController">
     <title>Nicholas Barger's Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +13,19 @@
     <!-- app styles -->
     <link href="/mobile-styles.css" type="text/css" rel="stylesheet">
     <link href="/desktop-styles.css" type="text/css" rel="stylesheet">
+
+    <!--[if lte IE 7]>
+    <script src="bower_components/json2/json2.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+        <script>
+          document.createElement('ng-include');
+          document.createElement('ng-view');
+          document.createElement('blog');
+          document.createElement('back');
+          document.createElement('blog-posts');
+    <![endif]-->
 
     <!-- library scripts -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>

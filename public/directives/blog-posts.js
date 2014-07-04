@@ -22,7 +22,7 @@ nb.directive('blogPosts', function($parse) {
       var columnClass = attrs.columns + "-columns";
 
       for(var i = 0; i < attrs.columns; i++) {
-        columnHtml += '<div id="column' + i + '" class="columnClass"></div>';
+        columnHtml += '<div id="column' + i + '" class="' + columnClass + '"></div>';
       }
       elem.html(columnHtml);
 
