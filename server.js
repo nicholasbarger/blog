@@ -8,6 +8,9 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var app = express();
 
+// set newrelic in express
+app.locals.newrelic = newrelic;
+
 // database
 var monk = require('monk');
 var conn = process.env.MONGOHQ_URL || 'localhost:27017/nb';
