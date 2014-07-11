@@ -198,12 +198,6 @@ table td {
   zoom: 1;
 }
 
-@-moz-document url-prefix() { 
-  .main-nav ul {
-    left: -195px;
-  }
-}
-
 .main-nav ul li {
   display: inline-block;
   padding-left: 10px;
