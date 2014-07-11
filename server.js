@@ -1,4 +1,4 @@
-require('newrelic');
+var newrelic = require('newrelic');
 var http = require('http');
 var port = process.env.PORT || 3000;
 
