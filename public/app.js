@@ -11,7 +11,8 @@ var nb = angular
         controller: 'latestController'
       })
       .when('/about', {
-        templateUrl: '/templates/about.html'
+        templateUrl: '/templates/about.html',
+        controller: 'aboutController'
       })
       .when('/admin', {
         templateUrl: '/templates/manage.html',
