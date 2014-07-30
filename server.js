@@ -19,6 +19,9 @@ var db = monk(conn);
 // passport authentication
 require('./passport.js')(passport, db);
 
+// prerender.io for seo
+app.use(require('prerender-node').set('prerenderToken', 'vsJ1HVIrr0Ex1w8TXY3o'));
+
 // make db accessible to our router
 app.use(function(req, res, next){
     req.db = db;
