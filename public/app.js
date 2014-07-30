@@ -38,19 +38,24 @@ var nb = angular
         controller: 'loginController'
       })
       .when('/portfolio', {
-        templateUrl: '/templates/portfolio.html'
+        templateUrl: '/templates/portfolio.html',
+        controller: 'portfolioController'
       })
       .when('/portfolio/arthrex', {
-        templateUrl: '/templates/portfolio-arthrex.html'
+        templateUrl: '/templates/portfolio-arthrex.html',
+        controller: 'portfolioController'
       })
       .when('/portfolio/hitech', {
-        templateUrl: '/templates/portfolio-hitech.html'
+        templateUrl: '/templates/portfolio-hitech.html',
+        controller: 'portfolioController'
       })
       .when('/portfolio/oms', {
-        templateUrl: '/templates/portfolio-oms.html'
+        templateUrl: '/templates/portfolio-oms.html',
+        controller: 'portfolioController'
       })
       .when('/portfolio/ptgl', {
-        templateUrl: '/templates/portfolio-ptgl.html'
+        templateUrl: '/templates/portfolio-ptgl.html',
+        controller: 'portfolioController'
       })
       .when('/posts', {
         templateUrl: '/templates/posts.html',
