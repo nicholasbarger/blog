@@ -9,7 +9,7 @@ nb.controller('postController', ['$rootScope', '$routeParams', '$sce', '$scope',
       $scope.post.contentHtml = $sce.trustAsHtml($scope.post.content);
 
       $rootScope.title = payload.title;
-      $rootScope.description = payload.content.replace(/<\/?[^>]+>/gi, '');
+      $rootScope.description = payload.content.replace(/<\/?[^>]+>/gi, '').substr(0, 100);
     })
   })();
 }]);
