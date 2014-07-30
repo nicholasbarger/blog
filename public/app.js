@@ -1,7 +1,10 @@
 var nb = angular
   .module('nb', ['ngRoute', 'ngLocale', 'newrelic-timing'])
   .config(function($locationProvider, $routeProvider) {
+
     $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
+
     $routeProvider
       .when('/', {
         templateUrl: '/templates/latest.html',
