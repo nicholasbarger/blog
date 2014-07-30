@@ -1,4 +1,4 @@
-nb.controller('postController', ['$rootScope, $routeParams', '$sce', '$scope', 'blogFactory',
+nb.controller('postController', ['$rootScope', '$routeParams', '$sce', '$scope', 'blogFactory',
   function($rootScope, $routeParams, $sce, $scope, blogFactory) {
     $scope.post = null;
 
