@@ -76,7 +76,7 @@ var nb = angular
       .when('/2008/06/10/feed-the-soul-a-few-technology-rss-feeds/', {redirectTo: '/posts/feed-the-soul---a-few-technology-rss-feeds'})
       .when('/2008/06/13/non-web-referenced-webservices-in-vb-net/', {redirectTo: '/posts/non-web-referenced-webservices-in-vb.net'})
       .when('/2008/06/16/urlrewriting-with-urlrewritingnet-urlrewriting-supertroopers-meow/', {redirectTo: '/posts/urlrewriting-with-urlrewritingnet-.-urlrewriting-(supertroopers---meow)'})
-      .when('/2008/06/16/do-you-need-to-be-pci-and-pabp-certified/', {redirectTo: '/posts/do-you-need-to-be-pci-and-pabp-certified?'})
+      .when('/2008/06/16/do-you-need-to-be-pci-and-pabp-certified/', {redirectTo: '/posts/do-you-need-to-be-pci-and-pabp-certified'})
       .when('/2008/08/02/oh-bitter-frustrations/', {redirectTo: '/posts/oh,-bitter-frustrations...'})
       .when('/2008/08/03/an-example-of-writing-your-own-blog-engine-mini-version/', {redirectTo: '/posts/an-example-of-writing-your-own-blog-engine-(mini-version)'})
       .when('/2008/08/11/an-example-of-writing-your-own-blog-engine-mini-version-part-two/', {redirectTo: '/posts/an-example-of-writing-your-own-blog-engine-(mini-version)-part-two'})
