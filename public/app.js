@@ -38,6 +38,10 @@ var nb = angular
         templateUrl: '/templates/login.html',
         controller: 'loginController'
       })
+      .when('/not-found', {
+        templateUrl: '/templates/not-found.html',
+        controller: 'notFoundController'
+      })
       .when('/portfolio', {
         templateUrl: '/templates/portfolio.html',
         controller: 'portfolioController'
@@ -143,8 +147,7 @@ var nb = angular
       .when('/2012/05/20/learning-knockout-js-crazy-mom-baby-tracker-demo/', {redirectTo: '/posts/learning-knockout-js-–-crazy-mom-baby-tracker-demo'})
       .when('/2013/02/09/paralysis-analysis-and-the-paradox-of-choice/', {redirectTo: '/posts/paralysis-analysis-and-the-paradox-of-choice'})
       .otherwise({
-        templateUrl: '/templates/not-found.html',
-        controller: 'notFoundController'
+        redirectTo: '/not-found'
       });
   })
   .constant('appSettings', {

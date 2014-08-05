@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="fragment" content="!">
 
+    <!-- prerender.io handle "soft 404's" -->
+    <script>
+      var currentPath = window.location.href;
+      console.log(currentPath);
+      if (currentPath.indexOf('not-found') != -1) {
+        document.write('<meta name="prerender-status-code" content="404">');
+      }
+    </script>
+
+
     <!-- fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
