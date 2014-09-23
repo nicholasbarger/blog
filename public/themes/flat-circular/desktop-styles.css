@@ -1,0 +1,66 @@
+/* Anything except smart phones ----------- */
+@media only screen
+and (min-width : 651px) {
+  body {
+  }
+
+  .content {
+    margin-right: 0px;
+  }
+
+  .intro {
+    width: 350px;
+    float: left;
+    padding-bottom: 1500px;
+    display: inline;
+  }
+
+  .intro + .page-content,
+  .intro + .page-content + .page-content,
+  .intro + .page-content + .page-content + .page-content {
+    overflow: hidden;
+    padding: 0px;
+  }
+
+  .intro h1 {
+    font-size: 1.5em;
+    margin-top: 25px;
+  }
+
+  .intro-img {
+    zoom: 0.70;
+  }
+
+  .main-nav {
+    position: inherit;
+    left: inherit;
+    top: inherit;
+    width: inherit;
+  }
+
+  .main-nav ul {
+    top: inherit;
+    left: inherit;
+    position: inherit;
+    width: inherit;
+    margin: 0px;
+    padding-left: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    -webkit-transform: rotate(0deg); /* Safari */
+    -moz-transform: rotate(0deg); /* Firefox */
+    -ms-transform: rotate(0deg); /* IE */
+    -o-transform: rotate(0deg); /* Opera */
+    /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); *//* IE */
+    filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
+    M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17); /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand',
+    M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17)"; /* IE8 */
+    zoom: 1;
+  }
+
+  .page-content {
+    padding-right: 15px;
+  }
+}

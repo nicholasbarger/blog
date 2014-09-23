@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="nb">
+<head>
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+
+  <!-- fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+
+  <!-- library styles -->
+  <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+  <!-- app styles -->
+  <link href="/themes/flat-circular/mobile-styles.css" type="text/css" rel="stylesheet">
+  <link href="/themes/flat-circular/desktop-styles.css" type="text/css" rel="stylesheet">
+
+  <!--[if lte IE 7]>
+  <script src="bower_components/json2/json2.js"></script>
+  <![endif]-->
+
+  <!-- library scripts -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+
+  <!-- google analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-3242359-4', 'auto');
+    //ga('send', 'pageview'); handled by routes instead
+  </script>
+
+  <!-- ****** faviconit.com favicons ****** -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196.png">
+  <link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
+  <link rel="apple-touch-icon" href="/favicon-57.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="/favicon-144.png">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+  <!-- ****** faviconit.com favicons ****** -->
+</head>
+<body>
+
+<!-- fixed header -->
+<header>
+  <h1>Nicholas Barger</h1>
+  <small>Life in c<a href="/login" class="easter-egg-link">o</a>de</small>
+
+  <a href="/"><img src="/media/images/me-costa.jpg" alt="Nicholas Barger"></a>
+</header>
+
+<nav class="main-nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- content -->
+<div class="content">
+{{{ yield }}}
+</div>
+
+<!-- custom scripts -->
+<script src="/app.js"></script>
+<script src="/controllers/contact.js"></script>
+
+</body>
+</html>

@@ -158,6 +158,15 @@ table td {
   color: inherit;
 }
 
+.img-circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border: 10px solid #fff;
+}
+
 .main-nav {
   color: #fff;
   background-color: #34a343;
