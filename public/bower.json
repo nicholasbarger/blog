@@ -4,7 +4,7 @@
   "authors": [
     "Nicholas Barger <nicholas@nicholasbarger.com>"
   ],
-  "description": "Nicholas Barger's personal website and blog.",
+  "description": "Nicholas Barger's personal website.",
   "main": "index.html",
   "keywords": [
     "nicholas barger"
@@ -16,7 +16,6 @@
     "angular-route": "~1.2.17",
     "font-awesome": "~4.1.0",
     "jquery": "~2.1.1",
-    "SyntaxHighlighter": "~3.0.83",
     "json2": "*"
   }
 }

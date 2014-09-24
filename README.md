@@ -1,4 +1,1 @@
-blog
-====
-
-Nicholas Barger's Blog
+Nicholas Barger's Website

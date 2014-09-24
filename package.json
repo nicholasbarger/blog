@@ -1,33 +1,25 @@
 {
   "name": "nicholasbarger.com",
   "version": "3.0.0",
-  "description": "Nicholas Barger's personal website and blog.",
+  "description": "Nicholas Barger's personal website.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "nicholas barger"
+    "nicholas barger personal"
   ],
   "author": "Nicholas Barger",
   "license": "BSD",
   "dependencies": {
-    "bcrypt": "^0.7.8",
     "body-parser": "~1.2.0",
     "cookie-parser": "^1.3.2",
     "express": "~4.3.1",
     "hjs": "~0.0.6",
     "hogan-express": "^0.5.2",
-    "mongodb": "~1.4.5",
-    "monk": "~0.9.0",
     "morgan": "^1.2.3",
     "newrelic": "^1.9.1",
-    "node-uuid": "~1.4.1",
-    "passport": "^0.2.0",
-    "passport-local": "^1.0.0",
-    "prerender-node": "^1.0.5",
     "q": "^1.0.1",
-    "static-favicon": "^2.0.0-alpha",
-    "uuid": "^1.4.1"
+    "serve-favicon": "^2.1.4"
   }
 }

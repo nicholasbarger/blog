@@ -6,4 +6,3 @@ http://www.nicholasbarger.com
 /* SITE */
 Language: English
 Doctype: HTML5
-Framework: Angular (https://angularjs.org/)

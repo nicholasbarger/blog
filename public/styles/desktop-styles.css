@@ -1,0 +1,23 @@
+/* Anything except smart phones ----------- */
+@media only screen
+and (min-width : 651px) {
+  body {
+  }
+
+  .content {
+    margin-right: 0px;
+  }
+
+  .intro h1 {
+    font-size: 1.5em;
+    margin-top: 25px;
+  }
+
+  .intro small {
+    margin-bottom: 25px;
+  }
+
+  .intro-img {
+    zoom: 0.70;
+  }
+}
