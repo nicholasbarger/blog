@@ -6,10 +6,16 @@ and (min-width : 651px) {
 
   .content {
     margin-right: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .intro {
     padding: 50px;
+  }
+
+  .intro-content p {
+    border-radius: 10px;
   }
 
   .intro-profile {
