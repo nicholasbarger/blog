@@ -8,16 +8,31 @@ and (min-width : 651px) {
     margin-right: 0px;
   }
 
-  .intro h1 {
+  .intro {
+    padding: 50px;
+  }
+
+  .intro-profile {
+    width: 50%;
+    float: left;
+  }
+
+  .intro-profile h1 {
     font-size: 1.5em;
     margin-top: 25px;
   }
 
-  .intro small {
+  .intro-profile small {
     margin-bottom: 25px;
+  }
+
+  .intro-content {
+    width: 50%;
+    float: right;
   }
 
   .intro-img {
     zoom: 0.70;
+    margin-top: -15px;
   }
 }

@@ -2,22 +2,13 @@ a {
   color: #16A085;
 }
 
-a .fa {
-  margin-right: 5px;
-}
-
-a.subtle {
-  color: inherit;
-}
-
 body {
-  color: #dcf7ff;
+  color: #101010;
   font-family: arial, helvetica, verdana, sans-serif;
   font-size: 12pt;
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: #243546;
   padding: 0px;
   margin: 0px;
 }
@@ -49,10 +40,6 @@ form button, form input[type='submit'] {
   text-align: right;
 }
 
-header {
-  display: none;
-}
-
 h1, h2, h3, h4, h5, h6 {
   color: #fff;
   font-weight: 300;
@@ -60,12 +47,22 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0px;
   padding: 0px;
   text-rendering: optimizeLegibility;
-  text-transform: uppercase;
 }
 
-h3 {
-  text-transform: uppercase;
-  margin-bottom: 15px;
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  text-decoration: none;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+header {
+  display: block;
 }
 
 input[type='search'] {
@@ -136,7 +133,8 @@ table td {
 }
 
 .content {
-  display: block;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .content img {
@@ -145,6 +143,12 @@ table td {
 
 .fa {
   color: #ED5A64;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .img-circle {
@@ -157,12 +161,39 @@ table td {
 }
 
 .intro {
+  background-color: #243546;
+  color: #fff;
+}
+
+.intro h1 {
+  text-transform: uppercase;
+  font-size: 2em;
+}
+
+.intro-profile {
   padding-top: 15px;
   text-align: center;
 }
 
-.intro small {
+.intro-profile small {
   display: block;
+  margin-bottom: 15px;
+}
+
+.intro-content p {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #16A085;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+}
+
+.intro-content p a {
+  color: #fff;
 }
 
 .intro-img {
@@ -176,21 +207,6 @@ table td {
   padding: 15px;
 }
 
-.page-content {
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 30px;
-  padding-bottom: 15px;
-  background-color: #34495E;
-}
-
-.page-header {
-  padding-top: 30px;
-  padding-left: 15px;
-  padding-right: 30px;
-  padding-bottom: 0px;
-}
-
 .post-list {
   margin-top: 30px;
 }
@@ -198,26 +214,16 @@ table td {
 .post-list .post {
   margin-bottom: 15px;
   display: block;
-  color: #fff;
-  background-color: #16A085;
-  border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-decoration: none;
 }
 
-.post-list .post:hover {
-  cursor: pointer;
+.post-list .post a {
 }
 
-.post-list .post h2 {
+.post-list .post h3 {
   font-size: 1em;
 }
 
 .post-list .post .post-content {
-  display: none;
 }
 
 .skill {

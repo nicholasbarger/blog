@@ -16,6 +16,17 @@ var app = express();
 // set newrelic in express
 app.locals.newrelic = newrelic;
 
+// database
+var monk = require('monk');
+var conn = process.env.MONGOHQ_URL || 'localhost:27017/nb';
+var db = monk(conn);
+
+// make db accessible to our router
+app.use(function(req, res, next){
+  req.db = db;
+  next();
+});
+
 // view engine setup
 app.set('view engine', 'html');
 app.set('layout', '../layouts/default');

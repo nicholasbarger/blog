@@ -1,43 +1,62 @@
-<div class="intro">
-  <div class="img-circle intro-img"></div>
-  <h1>Nicholas Barger</h1>
-  <small><i class="fa fa-heart"></i> Software Professional</small>
-
-  <br>
-
-  <!-- LinkedIn -->
-  <div class="contact-item">
-    <a href="http://www.linkedin.com/in/nicholasbarger" target="_blank">
-      <i class="fa fa-linkedin-square fa-5x" style="color: #007bb6"></i>
-    </a>
+<!-- the top header for the homepage -->
+<header class="intro group">
+  <div class="intro-profile">
+    <div class="img-circle intro-img"></div>
+    <h1>Nicholas Barger</h1>
+    <small>Entrepreneur - CTO - Engineer</small>
   </div>
 
-  <!-- Github -->
-  <div class="contact-item">
-    <a href="https://github.com/nicholasbarger" target="_blank">
-      <i class="fa fa-github-square fa-5x"></i>
-    </a>
+  <div class="intro-content">
+
+    <!-- LinkedIn -->
+    <div class="contact-item">
+      <a href="http://www.linkedin.com/in/nicholasbarger" target="_blank">
+        <i class="fa fa-linkedin-square fa-5x" style="color: #007bb6"></i>
+      </a>
+    </div>
+
+    <!-- Github -->
+    <div class="contact-item">
+      <a href="https://github.com/nicholasbarger" target="_blank">
+        <i class="fa fa-github-square fa-5x"></i>
+      </a>
+    </div>
+
+    <!-- Twitter -->
+    <div class="contact-item">
+      <a href="https://twitter.com/nbarger" target="_blank">
+        <i class="fa fa-twitter-square fa-5x" style="color: #2175d1"></i>
+      </a>
+    </div>
+
+    <!-- Email -->
+    <div class="contact-item">
+      <a href="#email" ng-click="isEmailDisplayed = !isEmailDisplayed">
+        <i class="fa fa-envelope-square fa-5x" style="color: #fff;"></i>
+      </a>
+    </div>
+
+    <!-- about -->
+    <p>I have a software development background specializing in web technologies coupled with business and management
+      experience. I have direct experience with e-commerce, insurance, medical device, aviation and large web-based applications.</p>
+
+    <!-- non-visible email -->
+    <div ng-if="isEmailDisplayed" id="email">
+      <p>Contact me by email: <a href="mailto:nicholas@nicholasbarger.com">nicholas@nicholasbarger.com</a></p>
+    </div>
   </div>
+</header>
 
-  <!-- Twitter -->
-  <div class="contact-item">
-    <a href="https://twitter.com/nbarger" target="_blank">
-      <i class="fa fa-twitter-square fa-5x" style="color: #2175d1"></i>
-    </a>
-  </div>
-
-  <!-- Email -->
-  <div class="contact-item">
-    <a href="" ng-click="isEmailDisplayed = !isEmailDisplayed">
-      <i class="fa fa-envelope-square fa-5x" style="color: #fff;"></i>
-    </a>
-  </div>
-
-  <!-- non-visible email -->
-  <div ng-if="isEmailDisplayed">
-    <p>It's a shame that bots scrape email addresses from websites to use in spam lists, but I rather you have my
-      email address directly instead of some impersonal contact form.</p>
-
-    <p><a href="mailto:nicholas@nicholasbarger.com">nicholas@nicholasbarger.com</a></p>
+<div class="content">
+  <div class="post-list">
+    {{#posts}}
+    <article class="post">
+      <h2><a href="{{link}}" title="{{title}}">{{title}}</a></h2>
+      <small>{{pubDate}}</small>
+      <div class="post-content">
+        {{content}}
+      </div>
+    </article>
+    {{/posts}}
   </div>
 </div>
