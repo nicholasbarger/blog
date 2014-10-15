@@ -54,6 +54,30 @@ module.exports = function(app) {
     notFound(res);
   });
 
+  app.get('/sitemap', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.find(null, { sort: { pubDate: -1 } }, function(e, posts) {
+
+      // setup base xml structure
+      var base = 'http://www.nicholasbarger.com';
+      var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
+
+      // add homepage
+      xml += '<url><loc>http://www.nicholasbarger.com/</loc></url>';
+
+      for(var i = 0; i < posts.length; i++) {
+        var link = base + posts[i].link;
+        xml += '<url><loc>' + link + '</loc></url>';
+      }
+
+      xml += '</urlset>';
+
+      res.set('Content-Type', 'text/xml');
+      res.send(xml);
+    });
+  });
+
   app.get('/2008/05/14/my-basic-ado-net-helper-functions/', function(req, res) { res.redirect('/posts/my-basic-ado.net-helper-functions')});
   app.get('/2008/05/01/what-the-heck-ill-start-a-blog/', function(req, res) { res.redirect('/posts/what-the-heck,-i\'ll-start-a-blog')});
   app.get('/2008/05/07/more-than-one-way-to-skin-a-cat-and-a-webpage/', function(req, res) { res.redirect('/posts/more-than-one-way-to-skin-a-cat...-and-a-webpage')});
