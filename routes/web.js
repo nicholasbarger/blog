@@ -13,7 +13,7 @@ module.exports = function(app) {
     collection.find(null, { limit: 3, sort: { pubDate: -1 } }, function(e, posts) {
       // todo: move this into promises
       var pastPosts = null;
-      collection.find(null, null, function(e, pastPosts) {
+      collection.find(null, { title: 1, link: 1 }, function(e, pastPosts) {
         pastPosts = pastPosts;
 
         res.render('home.html', {
@@ -30,7 +30,6 @@ module.exports = function(app) {
     var db = req.db;
     var collection = db.get('posts');
     collection.findOne({ name: req.params.name }, function(e, post) {
-      console.log(post);
       if(post === null) {
         notFound(res);
       }
