@@ -9,6 +9,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var path = require('path');
 var hoganExpress = require('hogan-express');
+var compress = require('compression')();
 
 // start express
 var app = express();
@@ -38,6 +39,7 @@ app.engine('html', hoganExpress);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(compress);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname +  '/public/favicon.ico'));

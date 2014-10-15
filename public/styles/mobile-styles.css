@@ -41,7 +41,6 @@ form button, form input[type='submit'] {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #fff;
   font-weight: 300;
   letter-spacing: 0.025em;
   margin: 0px;
@@ -59,6 +58,10 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 
 h2 {
   font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
 }
 
 header {
@@ -135,6 +138,7 @@ table td {
 .content {
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 30px;
 }
 
 .content img {
@@ -142,7 +146,6 @@ table td {
 }
 
 .fa {
-  color: #ED5A64;
 }
 
 .group:after {
@@ -207,37 +210,21 @@ table td {
   padding: 15px;
 }
 
-.post-list {
-  margin-top: 30px;
-}
-
 .post-list .post {
   margin-bottom: 15px;
   display: block;
-}
-
-.post-list .post a {
-}
-
-.post-list .post h3 {
-  font-size: 1em;
-}
-
-.post-list .post .post-content {
 }
 
 .skill {
   width: 33.33333%;
   float: left;
   text-align: center;
-  color: #fff;
   margin-bottom: 30px;
 }
 
 .tech-skill {
   width: 33.33333%;
   float: left;
-  color: #fff;
 }
 
 .tech-skill ul {

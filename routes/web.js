@@ -1,29 +1,58 @@
 module.exports = function(app) {
 
+  function notFound(res) {
+    res.status(404).render('not-found.html', {
+      title: 'The page you are looking for was not found',
+      description: 'Oops, it looks like one of us made a mistake.  The page could not be found to be displayed.'
+    });
+  }
+
   app.get('/', function(req, res) {
     var db = req.db;
     var collection = db.get('posts');
     collection.find(null, { limit: 3, sort: { pubDate: -1 } }, function(e, posts) {
-      res.render('home.html', {
-        title: 'Nicholas Barger: Entrepreneur - CTO - Engineer',
-        description: 'Nicholas Barger is a business professional who specialized in the software development space and has extensive experience in several industries.',
-        posts: posts
+      // todo: move this into promises
+      var pastPosts = null;
+      collection.find(null, null, function(e, pastPosts) {
+        pastPosts = pastPosts;
+
+        res.render('home.html', {
+          title: 'Nicholas Barger: Entrepreneur - CTO - Engineer',
+          description: 'Nicholas Barger is a business professional who specialized in the software development space and has extensive experience in several industries.',
+          posts: posts,
+          pastPosts: pastPosts
+        });
       });
     });
   });
 
+  app.get('/posts/:name', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.findOne({ name: req.params.name }, function(e, post) {
+      console.log(post);
+      if(post === null) {
+        notFound(res);
+      }
+      else {
+        res.render('post.html', {
+          title: 'Nicholas Barger: ' + post.title,
+          description: post.title.substr(0, 100),
+          post: post
+        });
+      }
+    });
+  });
+
   app.get('/error', function(req, res) {
-    res.render('error.html', {
+    res.status(500).render('error.html', {
       title: 'An error occurred',
       description: 'It looks like an error occurred, please try again or report this error to Nicholas Barger.'
     });
   });
 
   app.get('/not-found', function(req, res) {
-    res.render('not-found.html', {
-      title: 'The page you are looking for was not found',
-      description: 'Oops, it looks like one of us made a mistake.  The page could not be found to be displayed.'
-    })
+    notFound(res);
   });
 
   app.get('/2008/05/14/my-basic-ado-net-helper-functions/', function(req, res) { res.redirect('/posts/my-basic-ado.net-helper-functions')});
@@ -102,8 +131,4 @@ module.exports = function(app) {
   app.get('/2012/03/11/fun-and-struggles-with-mvc-no-parameterless-constructor-defined/', function(req, res) { res.redirect('/posts/fun-and-struggles-with-mvc---no-parameterless-constructor-defined')});
   app.get('/2012/05/20/learning-knockout-js-crazy-mom-baby-tracker-demo/', function(req, res) { res.redirect('/posts/learning-knockout-js-–-crazy-mom-baby-tracker-demo')});
   app.get('/2013/02/09/paralysis-analysis-and-the-paradox-of-choice/', function(req, res) { res.redirect('/posts/paralysis-analysis-and-the-paradox-of-choice')});
-
-  app.get('/posts', function(req, res) { res.redirect('/blog/posts')});
-  app.get('/posts/:name', function(req, res) { res.redirect('/blog/posts/:name')});
-  app.get('/latest', function(req, res) { res.redirect('/blog')});
 };

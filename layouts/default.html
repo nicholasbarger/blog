@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, user-scalable=no">
 
   <!-- library styles -->
-  <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!--<link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
 
   <!-- app styles -->
   <link href="/styles/mobile-styles.css" type="text/css" rel="stylesheet">
@@ -14,10 +15,6 @@
   <!--[if lte IE 7]>
   <script src="bower_components/json2/json2.js"></script>
   <![endif]-->
-
-  <!-- library scripts -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="/bower_components/angular/angular.js"></script>
 
   <!-- google analytics -->
   <script>
@@ -53,8 +50,66 @@
 </head>
 <body>
 
+<!-- the top header for the homepage -->
+<header class="intro group">
+  <div class="intro-profile">
+    <div class="img-circle intro-img"></div>
+    <h1>Nicholas Barger</h1>
+    <small>Entrepreneur - CTO - Engineer</small>
+  </div>
+
+  <div class="intro-content">
+
+    <!-- LinkedIn -->
+    <div class="contact-item">
+      <a href="http://www.linkedin.com/in/nicholasbarger" target="_blank">
+        <i class="fa fa-linkedin-square fa-5x"></i>
+      </a>
+    </div>
+
+    <!-- Github -->
+    <div class="contact-item">
+      <a href="https://github.com/nicholasbarger" target="_blank">
+        <i class="fa fa-github-square fa-5x"></i>
+      </a>
+    </div>
+
+    <!-- Twitter -->
+    <div class="contact-item">
+      <a href="https://twitter.com/nbarger" target="_blank">
+        <i class="fa fa-twitter-square fa-5x"></i>
+      </a>
+    </div>
+
+    <!-- Email -->
+    <div class="contact-item">
+      <a href="#email" ng-click="isEmailDisplayed = !isEmailDisplayed">
+        <i class="fa fa-envelope-square fa-5x"></i>
+      </a>
+    </div>
+
+    <!-- about -->
+    <p>I have a software development background specializing in web technologies coupled with business and management
+      experience. I have direct experience with e-commerce, insurance, medical device, aviation and large web-based applications.</p>
+
+    <!-- non-visible email -->
+    <div ng-if="isEmailDisplayed" id="email">
+      <p>Contact me by email: <a href="mailto:nicholas@nicholasbarger.com">nicholas@nicholasbarger.com</a></p>
+    </div>
+  </div>
+</header>
+
 <!-- content -->
-{{{ yield }}}
+<div class="content">
+  {{{ yield }}}
+</div>
+
+<!-- library scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='/bower_components/jquery/dist/jquery.min.js'\>\x3C//script>");</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>window.angular || document.write("<script src='/bower_components/angular/angular.min.js'>\x3C/script>");</script>
 
 <!-- custom scripts -->
 <script src="/app.js"></script>

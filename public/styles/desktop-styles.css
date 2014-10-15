@@ -29,6 +29,7 @@ and (min-width : 651px) {
   .intro-content {
     width: 50%;
     float: right;
+    margin-top: 25px;
   }
 
   .intro-content p:first-of-type {
