@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.get('/posts/:name', function(req, res) {
     var db = req.db;
     var collection = db.get('posts');
-    collection.findOne({ name: req.params.name }, function(e, post) {
+    collection.findOne({ name: req.params.name }, { sort: { pubDate: -1 } }, function(e, post) {
       if(post === null) {
         notFound(res);
       }
