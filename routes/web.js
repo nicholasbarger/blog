@@ -26,6 +26,29 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/feed', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    collection.find(null, { sort: { pubDate: -1 } }, function(e, posts) {
+
+      // setup base xml structure
+      var rss = '<rss version="2.0"><channel><title>Nicholas Barger\'s Blog</title><link>http://www.nicholasbarger.com</link>' +
+        '<description>A blog about software development, entrepreneurship, and technology in general.</description>' +
+        '<language>English</language><webMaster>nicholas@nicholasbarger.com</webMaster>' +
+        '<image><url>http://www.nicholasbarger.com/media/images/me-costa.jpg</url><link>http://www.nicholasbarger.com</link></image>';
+
+      for(var i = 0; i < posts.length; i++) {
+        var post = posts[i];
+        rss += '<item><title>' + post.title + '</title><link>' + post.link + '</link><description>' + post.description + '</description></item>';
+      }
+
+      rss += '</channel></rss>';
+
+      res.set('Content-Type', 'text/xml');
+      res.send(rss);
+    });
+  });
+
   app.get('/posts/:name', function(req, res) {
     var db = req.db;
     var collection = db.get('posts');
@@ -52,29 +75,6 @@ module.exports = function(app) {
 
   app.get('/not-found', function(req, res) {
     notFound(res);
-  });
-
-  app.get('/rss', function(req, res) {
-    var db = req.db;
-    var collection = db.get('posts');
-    collection.find(null, { sort: { pubDate: -1 } }, function(e, posts) {
-
-      // setup base xml structure
-      var rss = '<rss version="2.0"><channel><title>Nicholas Barger\'s Blog</title><link>http://www.nicholasbarger.com</link>' +
-          '<description>A blog about software development, entrepreneurship, and technology in general.</description>' +
-          '<language>English</language><webMaster>nicholas@nicholasbarger.com</webMaster>' +
-          '<image><url>http://www.nicholasbarger.com/media/images/me-costa.jpg</url><link>http://www.nicholasbarger.com</link></image>';
-
-      for(var i = 0; i < posts.length; i++) {
-        var post = posts[i];
-        rss += '<item><title>' + post.title + '</title><link>' + post.link + '</link><description>' + post.description + '</description></item>';
-      }
-
-      rss += '</channel></rss>';
-
-      res.set('Content-Type', 'text/xml');
-      res.send(rss);
-    });
   });
 
   app.get('/sitemap', function(req, res) {
