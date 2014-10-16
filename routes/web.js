@@ -61,8 +61,9 @@ module.exports = function(app) {
 
       // setup base xml structure
       var rss = '<rss version="2.0"><channel><title>Nicholas Barger\'s Blog</title><link>http://www.nicholasbarger.com</link>' +
-          '<description>A blog about software development, entrepreneurship, and technology in general.</description></channel>' +
-          '<language>English</language><webMaster>nicholas@nicholasbarger.com</webMaster>';
+          '<description>A blog about software development, entrepreneurship, and technology in general.</description>' +
+          '<language>English</language><webMaster>nicholas@nicholasbarger.com</webMaster>' +
+          '<image><url>http://www.nicholasbarger.com/media/images/me-costa.jpg</url><link>http://www.nicholasbarger.com</link></image>';
 
       for(var i = 0; i < posts.length; i++) {
         var post = posts[i];
