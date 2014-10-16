@@ -22,6 +22,17 @@ var monk = require('monk');
 var conn = process.env.MONGOHQ_URL || 'localhost:27017/nb';
 var db = monk(conn);
 
+// redirect non-www to www for seo
+if(process.env.NODE_ENV === 'production') {
+  app.get('*', function(req, res, next) {
+    if (req.headers.host.slice(0, 3) != 'www') {
+      res.redirect('http://www.' + req.headers.host + req.url, 301);
+    } else {
+      next();
+    }
+  });
+}
+
 // make db accessible to our router
 app.use(function(req, res, next){
   req.db = db;
