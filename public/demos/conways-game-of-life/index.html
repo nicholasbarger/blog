@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Conway's Game of Life in Angular</title>
+  <link src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container" ng-controller="MainController">
+    <h1>John Conway's Game of Life Simulation</h1>
+    <p>This simulation shows what happens to "life" as it evolves based on the following simple rules:</p>
+    <ul>
+      <li>Any live cell with fewer than two live neighbors dies, as if caused by under-population.</li>
+      <li>Any live cell with two or three live neighbors lives on to the next generation.</li>
+      <li>Any live cell with more than three live neighbors dies, as if by overcrowding.</li>
+      <li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</li>
+    </ul>
+    <p>The board will be 30x30 cells.</p>
+
+    <form ng-submit="start()">
+      <label>Enter the number of spontaneous lifeforms:</label>
+      <input type="number" ng-model="numberOfSpontaneousLifeforms" style="width: 40px;"><br>
+      <label>Enter the number of generations to simulate:</label>
+      <input type="number" ng-model="numberOfGenerations" style="width: 60px;">
+      <button type="submit">Start</button>
+    </form>
+
+    <strong ng-show="rows.length > 0">Generation {{generationCount}}</strong>
+    <table id="board" class="table table-bordered">
+      <tr ng-repeat="row in rows">
+        <td ng-repeat="cell in row">
+          <i class="glyphicon glyphicon-fire" ng-show="cell.isAlive == true"></i>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+  <script>
+    var MainController = function($scope, $timeout) {
+      var rowCount = 30;
+      var colCount = 30;
+      var initialRandomLife = [];
+      var generationDurationInMs = 500;
+
+      $scope.generationCount = 0;
+      $scope.numberOfGenerations = 500;
+      $scope.numberOfSpontaneousLifeforms = 7;
+
+      var getNeighborCoordinates = function(x, y) {
+        // 8 possible neighbors if not on a border
+        var n = { x: x + 1, y: y };
+        var e = { x: x, y: y + 1 };
+        var s = { x: x - 1, y: y };
+        var w = { x: x, y: y - 1 };
+        var nw = { x: x + 1, y: y - 1 };
+        var ne = { x: x + 1, y: y + 1 };
+        var sw = { x: x - 1, y: y - 1 };
+        var se = { x: x - 1, y: y + 1 };
+
+        var allCoordinates = [n, e, s, w, nw, ne, sw, se];
+        var validCoordinates = [];
+        for(var i = 0; i < allCoordinates.length; i++) {
+          var coord = allCoordinates[i];
+          if(coord.x >= 0 && coord.y >= 0 && coord.x < rowCount && coord.y < colCount) {
+            validCoordinates.push(coord);
+          }
+        }
+
+        return validCoordinates;
+      };
+
+      var getRandomNumber = function(low, high) {
+        return Math.floor(Math.random() * high) + low;
+      };
+
+      var runNextGeneration = function() {
+        console.log('generation ' + $scope.generationCount.toString() + ' started');
+        for(var i = 0; i < rowCount; i++) {
+          for(var j = 0; j < colCount; j++) {
+
+            // get neighbors
+            var neighbors = getNeighborCoordinates(i, j);
+            var numberOfNeighborsAlive = 0;
+            for(var k = 0; k < neighbors.length; k++) {
+              var neighbor = $scope.rows[neighbors[k].x][neighbors[k].y];
+              if(neighbor.isAlive === true) {
+                numberOfNeighborsAlive++;
+              }
+            }
+
+            // apply rules
+            if($scope.rows[i][j].isAlive === true) {
+              // rule 1: Any live cell with fewer than two live neighbors
+              // dies, as if caused by under-population.
+              if(numberOfNeighborsAlive < 2) {
+                $scope.rows[i][j].isAlive = false;
+              }
+
+              // rule 2: Any live cell with two or three live neighbors
+              // lives on to the next generation.
+              // do nothing
+
+              // rule 3: ny live cell with more than three live neighbors
+              // dies, as if by overcrowding.
+              if(numberOfNeighborsAlive > 3) {
+                $scope.rows[i][j].isAlive = false;
+              }
+            }
+            else {
+              // rule 4: Any dead cell with exactly three live neighbors
+              // becomes a live cell, as if by reproduction.
+              if(numberOfNeighborsAlive == 3) {
+                $scope.rows[i][j].isAlive = true;
+              }
+            }
+          }
+        }
+
+        $scope.$apply();
+        $scope.generationCount++;
+        if($scope.generationCount < $scope.numberOfGenerations) {
+          $timeout(runNextGeneration, generationDurationInMs);
+        }
+      };
+
+      $scope.start = function() {
+
+        $scope.rows = [];
+
+        // setup board
+        for(var i = 0; i < rowCount; i++) {
+          $scope.rows.push([]);
+          for(var j = 0; j < colCount; j++) {
+            var id = i.toString() + j.toString();
+            var isAlive = false;
+            var cell = {
+              id: id,
+              isAlive: isAlive
+            };
+            $scope.rows[i].push(cell);
+          }
+        }
+
+        // all coordinates of lifeforms
+        var coordinatesOfLifeforms = [];
+
+        // generate random life
+        for(var i = 0; i < $scope.numberOfSpontaneousLifeforms; i++) {
+          var randomX = getRandomNumber(0, rowCount);
+          var randomY = getRandomNumber(0, colCount);
+          coordinatesOfLifeforms.push({
+            x: randomX,
+            y: randomY
+          });
+        }
+
+        // update cells in board
+        for(var i = 0; i < rowCount; i++) {
+          for(var j = 0; j < colCount; j++) {
+            // check if in coordinates of life forms
+            for(var k = 0; k < coordinatesOfLifeforms.length; k++) {
+              if(coordinatesOfLifeforms[k].x == i && coordinatesOfLifeforms[k].y == j) {
+                var neighbors = getNeighborCoordinates(i, j);
+                var randomNeighbor1 = neighbors[getRandomNumber(0, neighbors.length)];
+                var randomNeighbor2 = neighbors[getRandomNumber(0, neighbors.length)];
+
+                $scope.rows[i][j].isAlive = true;
+                $scope.rows[randomNeighbor1.x][randomNeighbor1.y].isAlive = true;
+                $scope.rows[randomNeighbor2.x][randomNeighbor2.y].isAlive = true;
+              }
+            }
+          }
+        }
+
+        // kick off generation cycles
+        $timeout(runNextGeneration, generationDurationInMs);
+      }
+    };
+  </script>
+</body>
+</html>
