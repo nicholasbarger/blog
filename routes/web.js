@@ -100,6 +100,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/unauthorized', function(req, res) {
+    res.statu(401).render('unauthorized.html');
+  });
+
   app.get('/2008/05/14/my-basic-ado-net-helper-functions/', function(req, res) { res.redirect('/posts/my-basic-ado.net-helper-functions')});
   app.get('/2008/05/01/what-the-heck-ill-start-a-blog/', function(req, res) { res.redirect('/posts/what-the-heck,-i\'ll-start-a-blog')});
   app.get('/2008/05/07/more-than-one-way-to-skin-a-cat-and-a-webpage/', function(req, res) { res.redirect('/posts/more-than-one-way-to-skin-a-cat...-and-a-webpage')});
