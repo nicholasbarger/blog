@@ -104,6 +104,13 @@ module.exports = function(app) {
     res.statu(401).render('unauthorized.html');
   });
 
+  app.get('/wp-login.php', function(req, res) {
+    res.status(404).render('not-wordpress.html', {
+      title: 'The page you are looking for was not found',
+      description: 'Stop, this is not WordPress.  Attacking wp-login will not do any good.'
+    });
+  });
+
   app.get('/2008/05/14/my-basic-ado-net-helper-functions/', function(req, res) { res.redirect('/posts/my-basic-ado.net-helper-functions')});
   app.get('/2008/05/01/what-the-heck-ill-start-a-blog/', function(req, res) { res.redirect('/posts/what-the-heck,-i\'ll-start-a-blog')});
   app.get('/2008/05/07/more-than-one-way-to-skin-a-cat-and-a-webpage/', function(req, res) { res.redirect('/posts/more-than-one-way-to-skin-a-cat...-and-a-webpage')});
@@ -144,7 +151,7 @@ module.exports = function(app) {
   app.get('/2009/03/19/common-reusable-business-entities-part-3/', function(req, res) { res.redirect('/posts/common-reusable-business-entities-part-3')});
   app.get('/2009/03/19/battle-of-the-third-party-controls/', function(req, res) { res.redirect('/posts/battle-of-the-third-party-controls')});
   app.get('/2009/04/07/learning-design-patterns/', function(req, res) { res.redirect('/posts/learning-design-patterns')});
-  app.get('/2009/06/19/i-wrote-it-why-do-i-need-to-document-it/', function(req, res) { res.redirect('/posts/i-wrote-it,-why-do-i-need-to-document-it?')});
+  app.get('/2009/06/19/i-wrote-it-why-do-i-need-to-document-it/', function(req, res) { res.redirect('/posts/i-wrote-it-why-do-i-need-to-document-it')});
   app.get('/2009/06/22/a-simple-tableless-form/', function(req, res) { res.redirect('/posts/a-simple-tableless-form')});
   app.get('/2009/07/03/css-zen-garden/', function(req, res) { res.redirect('/posts/css-zen-garden')});
   app.get('/2009/07/14/staying-in-touch-how-to-build-a-contact-form/', function(req, res) { res.redirect('/posts/staying-in-touch---how-to-build-a-contact-form')});
@@ -180,4 +187,6 @@ module.exports = function(app) {
   app.get('/2012/03/11/fun-and-struggles-with-mvc-no-parameterless-constructor-defined/', function(req, res) { res.redirect('/posts/fun-and-struggles-with-mvc---no-parameterless-constructor-defined')});
   app.get('/2012/05/20/learning-knockout-js-crazy-mom-baby-tracker-demo/', function(req, res) { res.redirect('/posts/learning-knockout-js-–-crazy-mom-baby-tracker-demo')});
   app.get('/2013/02/09/paralysis-analysis-and-the-paradox-of-choice/', function(req, res) { res.redirect('/posts/paralysis-analysis-and-the-paradox-of-choice')});
+
+
 };
