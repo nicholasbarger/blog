@@ -145,7 +145,8 @@ table td {
   max-width: 100%;
 }
 
-.fa {
+.fa:hover {
+  color: #27ffe4;
 }
 
 .group:after {
