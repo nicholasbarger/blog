@@ -193,6 +193,12 @@ table td {
   text-decoration: none;
 }
 
+.intro-content a.link {
+  color: #fff;
+  text-align: center;
+  display: block;
+}
+
 .intro-content p a {
   color: #fff;
 }
@@ -201,8 +207,10 @@ table td {
   background-image: url('../../media/images/me-costa.jpg');
   background-position-x: -275px;
   background-position-y: -10px;
+  background-position: calc(-275px) -10px;
   margin: auto;
   zoom: 0.80;
+  cursor: pointer;
 }
 
 .post-list .post {

@@ -26,6 +26,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/about', function(req, res) {
+    res.render('about.html', {
+      title: 'About Nicholas Barger',
+      description: 'This would be my Wikipedia entry if I was wiki-worthy.'
+    });
+  });
+
   app.get('/feed', function(req, res) {
     var db = req.db;
     var collection = db.get('posts');
