@@ -1,3 +1,5 @@
+var q = require('q');
+
 module.exports = function(app) {
 
   function notFound(res) {
@@ -10,20 +12,29 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     var db = req.db;
     var collection = db.get('posts');
-    collection.find(null, { limit: 3, sort: { pubDate: -1 } }, function(e, posts) {
-      // todo: move this into promises
-      var pastPosts = null;
-      collection.find(null, { skip: 3, sort: { pubDate: -1 }, title: 1, link: 1 }, function(e, pastPosts) {
-        pastPosts = pastPosts;
-
+    
+    var findRecentPosts = collection.find(null, { limit: 3, sort: { pubDate: -1 } });
+    var findAllPosts = collection.find(null, { skip: 3, sort: { pubDate: -1 }, title: 1, link: 1 });
+    
+    q.all([findRecentPosts, findAllPosts]).then(
+      // success
+      function(results) {
+        var posts = results[0];
+        var pastPosts = results[1];
+        
+        // return page content
         res.render('home.html', {
           title: 'Nicholas Barger: Entrepreneur - CTO - Engineer',
           description: 'Nicholas Barger is a business professional who specialized in the software development space and has extensive experience in several industries.',
           posts: posts,
           pastPosts: pastPosts
         });
-      });
-    });
+      },
+      // error
+      function(errors) {
+        console.log(errors);
+      }
+    );
   });
 
   app.get('/about', function(req, res) {
