@@ -1,5 +1,9 @@
 var q = require('q');
 
+// attempting a poor man's cache here to store all posts
+var cachedPosts = null;
+var cachedPastPosts = null;
+
 module.exports = function(app) {
 
   function notFound(res) {
@@ -10,31 +14,42 @@ module.exports = function(app) {
   }
 
   app.get('/', function(req, res) {
-    var db = req.db;
-    var collection = db.get('posts');
     
-    var findRecentPosts = collection.find(null, { limit: 3, sort: { pubDate: -1 } });
-    var findAllPosts = collection.find(null, { skip: 3, sort: { pubDate: -1 }, title: 1, link: 1 });
+    var returnContent = function(posts, pastPosts) {
+      // return page content
+      res.render('home.html', {
+        title: 'Nicholas Barger: Entrepreneur - CTO - Engineer',
+        description: 'Nicholas Barger is a business professional who specialized in the software development space and has extensive experience in several industries.',
+        posts: posts,
+        pastPosts: pastPosts
+      });
+    };
     
-    q.all([findRecentPosts, findAllPosts]).then(
-      // success
-      function(results) {
-        var posts = results[0];
-        var pastPosts = results[1];
-        
-        // return page content
-        res.render('home.html', {
-          title: 'Nicholas Barger: Entrepreneur - CTO - Engineer',
-          description: 'Nicholas Barger is a business professional who specialized in the software development space and has extensive experience in several industries.',
-          posts: posts,
-          pastPosts: pastPosts
-        });
-      },
-      // error
-      function(errors) {
-        console.log(errors);
-      }
-    );
+    // check from cache first
+    if(cachedPosts !== null) {
+      returnContent(cachedPosts, cachedPastPosts);
+    }
+    else {
+      var db = req.db;
+      var collection = db.get('posts');
+      
+      var findRecentPosts = collection.find(null, { limit: 3, sort: { pubDate: -1 } });
+      var findAllPosts = collection.find(null, { skip: 3, sort: { pubDate: -1 }, title: 1, link: 1 });
+
+      q.all([findRecentPosts, findAllPosts]).then(
+        // success
+        function(results) {
+          cachedPosts = results[0];
+          cachedPastPosts = results[1];
+          
+          returnContent(cachedPosts, cachedPastPosts);
+        },
+        // error
+        function(errors) {
+          console.log(errors);
+        }
+      ); 
+    }
   });
 
   app.get('/about', function(req, res) {
@@ -42,6 +57,12 @@ module.exports = function(app) {
       title: 'About Nicholas Barger',
       description: 'This would be my Wikipedia entry if I was wiki-worthy.'
     });
+  });
+  
+  app.get('/clear-cache', function(req, res) {
+    cachedPosts = null;
+    cachedPastPosts = null;
+    res.send('Cache has been cleared.');
   });
 
   app.get('/feed', function(req, res) {
