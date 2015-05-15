@@ -164,6 +164,15 @@ table td {
   border: 10px solid #fff;
 }
 
+.img-circle-small {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  border: 2px solid #fff;
+}
+
 .intro {
   background-color: #243546;
   color: #fff;

@@ -18,6 +18,7 @@ module.exports = function(app) {
     var returnContent = function(posts, pastPosts) {
       // return page content
       res.render('home.html', {
+        layout: '../layouts/home',
         title: 'Nicholas Barger: Entrepreneur - CTO - Engineer',
         description: 'Nicholas Barger is a business professional who specialized in the software development space and has extensive experience in several industries.',
         posts: posts,
